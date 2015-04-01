@@ -1,0 +1,7 @@
+# heroku
+# heroku login (user y pass)
+# heroku create (la primera vez)
+# heroku config:set NODE_ENV=production
+# git push heroku master
+# heroku ps:scale web=1
+
