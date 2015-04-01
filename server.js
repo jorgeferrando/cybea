@@ -1,6 +1,6 @@
 var express = require('express')
-    ,stylus = require('stylus')
-    ,logger = require('morgan');
+    , stylus = require('stylus')
+    , logger = require('morgan');
 
 var env = process.env.NODE_ENV || 'development';
 
@@ -22,6 +22,10 @@ app.use(stylus.middleware(
 ));
 
 app.use(express.static(__dirname + '/public'));
+
+app.get('/partials/:partial', function (req, res) {
+    res.render('partials/' + req.params.partial);
+});
 
 app.get('*', function (req, res) {
     res.render('index');
