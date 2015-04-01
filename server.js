@@ -26,7 +26,11 @@ app.use(stylus.middleware(
 
 app.use(express.static(__dirname + '/public'));
 
-mongoose.connect('mongodb://localhost/cybea');
+if (env === 'development') {
+    mongoose.connect('mongodb://localhost/cybea');
+} else {
+    mongoose.connect('mongodb://cybeagestion:EsPeLuzNanTe7@ds037581.mongolab.com:37581/cybea');
+}
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error...'));
 db.once('open', function callback() {
