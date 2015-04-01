@@ -9,9 +9,3 @@ angular.module('app', ['ngResource', 'ngRoute'])
             });
     }])
 ;
-
-angular.module('app')
-    .controller('MainCtrl', function () {
-        var vm = this;
-        vm.myVar = "caca";
-    });

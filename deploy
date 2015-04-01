@@ -5,5 +5,7 @@
 # git push heroku master
 # heroku ps:scale web=1
 
+# heroku restart
+
 # https://cherry-tart-3524.herokuapp.com/
 
