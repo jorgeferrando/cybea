@@ -1,12 +1,16 @@
 {
   "name": "cybea",
   "version": "0.0.0",
-  "description": "",
+  "description": "Foodies social network",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Jorge Ferrando",
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.4.x"
+  },
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.12.2",
