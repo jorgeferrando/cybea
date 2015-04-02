@@ -1,6 +1,7 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
+    , userModel = require('../models/User')
+    ;
 
-require('../models/User');
 
 module.exports = function (config) {
     mongoose.connect(config.db);
@@ -9,4 +10,5 @@ module.exports = function (config) {
     db.once('open', function callback() {
         console.log('Cybea db opened');
     });
+    userModel.createdefaultUsers();
 };
