@@ -1,6 +1,11 @@
-angular.module('app').factory('Identity', function () {
+angular.module('app').factory('Identity', function ($window, User) {
+    var currentUser;
+    if (!!$window.bootstrappedUserObject) {
+        currentUser = new User();
+        angular.extend(currentUser, $window.bootstrappedUserObject);
+    }
     return {
-        currentUser: undefined,
+        currentUser: currentUser,
         isAuthenticated: function () {
             return !!this.currentUser;
         }
