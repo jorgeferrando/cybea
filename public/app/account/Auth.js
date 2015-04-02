@@ -31,6 +31,18 @@ angular.module('app').factory('Auth', function ($http, Identity, $q, User) {
             } else {
                 return $q.reject('not authorized');
             }
+        },
+        createUser: function (newUserData) {
+            var newUser = new User(newUserData);
+            var dfd = $q.defer();
+
+            newUser.$save().then(function () {
+                Identity.currentUser = newUser;
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
         }
     }
 });

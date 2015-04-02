@@ -15,6 +15,9 @@ angular.module('app', ['ngResource', 'ngRoute'])
                 , controller: 'MainCtrl'
                 , controllerAs: 'vm'
             })
+            .when('/signup', {
+                controller: 'SignupCtrl'
+            })
             .when('/admin/users', {
                 templateUrl: '/partials/admin/user-list',
                 controller: 'UserListCtrl',
