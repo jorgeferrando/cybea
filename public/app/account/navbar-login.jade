@@ -1,0 +1,15 @@
+.navbar-right(ng-controller="NavbarLoginCtrl as vm")
+    form.navbar-form.form-inline(ng-submit="vm.signin(vm.username,vm.password)" name="NavbarLoginForm" ng-hide="vm.identity.isAuthenticated()")
+        .form-group
+            input.form-control(placeholder="Username", ng-model="vm.username", type="text")
+        .from-group
+            input.form-control(placeholder="Password", ng-model="vm.password", type="password")
+        input.btn.btn-primary(type="submit" value="Sigin")
+    ul.nav.navbar-nav.navbar-right(ng-show="vm.identity.isAuthenticated()")
+        li.dropdown
+            a.dropdown-toggle(href="", data-toggle="dropdown")
+                | {{ vm.identity.currentUser.firstName+" "+vm.identity.currentUser.lastName}}
+                b.caret
+            ul.dropdown-menu
+                li
+                    a(href="", ng-click="vm.signout()") Sign Out

@@ -3,7 +3,7 @@ angular.module('app', ['ngResource', 'ngRoute'])
         $locationProvider.html5Mode(true);
         $routeProvider
             .when('/', {
-                templateUrl: '/partials/main'
+                templateUrl: '/partials/main/main'
                 , controller: 'MainCtrl'
                 , controllerAs: 'vm'
             });
