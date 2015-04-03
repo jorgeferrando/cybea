@@ -8,7 +8,12 @@ var userSchema = mongoose.Schema({
     userName: String,
     salt: String,
     hashed_pwd: String,
-    roles: [String]
+    roles: [String],
+    facebook: {
+        id: String,
+        token: String,
+        name: String
+    }
 });
 
 userSchema.methods = {

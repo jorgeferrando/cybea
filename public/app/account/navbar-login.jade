@@ -2,6 +2,8 @@
     form.navbar-form.form-inline(ng-submit="vm.signin(vm.username,vm.password)" name="NavbarLoginForm" ng-hide="vm.identity.isAuthenticated()")
         ul.nav.navbar-nav
             li
+                a(href="" ng-click="vm.signinFacebook()") Facebook
+            li
                 a(href="/signup") Sign Up
         .form-group
             input.form-control(placeholder="Username", ng-model="vm.username", type="text")

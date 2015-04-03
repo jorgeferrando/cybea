@@ -1,4 +1,4 @@
-angular.module('app').factory('Auth', function ($http, Identity, $q, User) {
+angular.module('app').factory('Auth', function ($http, Identity, $q, User, $window) {
     return {
         authenticateUser: function (username, password) {
             var dfd = $q.defer();
@@ -43,6 +43,14 @@ angular.module('app').factory('Auth', function ($http, Identity, $q, User) {
                 dfd.reject(response.data.reason);
             });
             return dfd.promise;
+        },
+        facebookLogin: function () {
+            var url = '/auth/facebook',
+                width = 1000,
+                height = 650,
+                top = (window.outerHeight - height) / 2,
+                left = (window.outerWidth - width) / 2;
+            $window.open(url, 'facebook_login', 'width=' + width + ',height=' + height + ',scrollbars=0,top=' + top + ',left=' + left);
         }
     }
 });

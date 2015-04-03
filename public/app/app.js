@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute'])
+var app = angular.module('app', ['ngResource', 'ngRoute'])
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         var routeRoleChecks = {
             admin: {
@@ -28,11 +28,30 @@ angular.module('app', ['ngResource', 'ngRoute'])
             })
         ;
     }])
-    .run(function ($rootScope, $location, Notifier) {
+    .run(function ($window, $rootScope, $location, Notifier, Identity, User) {
         $rootScope.$on('$routeChangeError', function (event, current, previous, rejection) {
             if (rejection === 'not authorized') {
                 Notifier.error(rejection);
                 $location.url('/');
             }
         });
+        $window.app = {
+            authState: function (state, userData) {
+                console.log("done!");
+                $rootScope.$apply(function () {
+                    switch (state) {
+                        case 'success':
+                            var user = new User();
+                            angular.extend(user, userData);
+                            Identity.currentUser = user;
+                            Notifier.success("Logged with Facebook!");
+                            break;
+                        case 'failure':
+                            Notifier.error("It was impossible to login with Facebook!");
+                            break;
+                    }
+
+                });
+            }
+        };
     });

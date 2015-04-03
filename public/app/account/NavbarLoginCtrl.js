@@ -13,6 +13,9 @@ angular.module('app')
                 }
             });
         };
+        vm.signinFacebook = function () {
+            Auth.facebookLogin();
+        };
         vm.signout = function () {
             Auth.logoutUser().then(function () {
                 vm.username = "";
