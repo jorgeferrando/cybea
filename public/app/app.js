@@ -37,7 +37,6 @@ var app = angular.module('app', ['ngResource', 'ngRoute'])
         });
         $window.app = {
             authState: function (state, userData) {
-                console.log("done!");
                 $rootScope.$apply(function () {
                     switch (state) {
                         case 'success':
