@@ -13,7 +13,7 @@ module.exports = function (app) {
         res.render('../../public/app/' + req.params[0]);
     });
 
-    app.get('/auth/facebook', passport.authenticate('facebook'));
+    app.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}));
 
     app.get('/auth/facebook/callback', passport.authenticate('facebook', {
         successRedirect: '/auth/facebook/success', failureRedirect: '/auth/facebook/failure'

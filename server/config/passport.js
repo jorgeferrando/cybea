@@ -22,6 +22,7 @@ module.exports = function () {
             clientSecret: 'd0bf7dd07d6172ecc07b29e03d0eede7',
             callbackURL: '/auth/facebook/callback'
         }, function (accessToken, refreshToken, profile, done) {
+            console.log(profile);
             User.findOne({'facebook.id': profile.id}).exec(function (err, user) {
                     if (err) {
                         return done(err);
